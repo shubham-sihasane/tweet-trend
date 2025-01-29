@@ -20,7 +20,7 @@ pipeline {
             steps {
                 withSonarQubeEnv('sonarqube-server') {
                     sh '''
-                        $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=HappyEngineers -Dsonar.projectKey=happyengineers -Dsonar.java.binaries=.
+                        $SCANNER_HOME/bin/sonar-scanner sonar.organization=happyengineers -Dsonar.projectName=HappyEngineers -Dsonar.projectKey=happyengineers -Dsonar.java.binaries=.
                         echo $SCANNER_HOME
                     '''
                 }
