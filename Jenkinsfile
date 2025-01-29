@@ -20,9 +20,16 @@ pipeline {
             steps {
                 withSonarQubeEnv('sonarqube-server') {
                     sh '''
-                        $SCANNER_HOME/bin/sonar-scanner -Dsonar.organization=happyengineers -Dsonar.projectName=HappyEngineers -Dsonar.projectKey=happyengineers -Dsonar.java.binaries=.
+                        $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=HappyEngineers -Dsonar.projectKey=HappyEngineers -Dsonar.java.binaries=.
                         echo $SCANNER_HOME
                     '''
+                }
+            }
+        }
+        stage('SonarQuality') {
+            steps {
+                timeout(time: 1, unit: 'HOURS') {
+                    waitForQualityGate abortPipeline: true
                 }
             }
         }
