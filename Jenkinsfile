@@ -7,12 +7,23 @@ pipeline {
     
     environment {
         PATH = "/opt/apache-maven-3.9.9/bin:$PATH"
+        SCANNER_HOME = tool 'sonarqube-scanner'
     }
     
     stages {
         stage('Package') {
             steps {
                 sh 'mvn package -DskipTests=true'
+            }
+        }
+        stage('Sonarqube'){
+            steps {
+                withSonarQubeEnv('sonarqube-server') {
+                    sh '''
+                        $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=HappyEngineers -Dsonar.projectKey=happyengineers -Dsonar.java.binaries=.
+                        echo $SCANNER_HOME
+                    '''
+                }
             }
         }
     }
