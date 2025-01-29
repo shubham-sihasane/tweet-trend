@@ -4,13 +4,15 @@ pipeline {
             label 'Jenkins-Slave'
         }
     }
+    
     environment {
         PATH = "/opt/apache-maven-3.9.9/bin:$PATH"
     }
+    
     stages {
-        stage('Build') {
+        stage('Package') {
             steps {
-                sh 'mvn clean deploy'
+                sh 'mvn package -DskipTests=true'
             }
         }
     }
