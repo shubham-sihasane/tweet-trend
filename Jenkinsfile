@@ -33,5 +33,12 @@ pipeline {
                 }
             }
         }
+        stage('Publish artifacts') {
+            steps {
+                withMaven(globalMavenSettingsConfig: '', jdk: '', maven: '', mavenSettingsConfig: 'maven-config', traceability: true) {
+                     sh "mvn deploy -DskipTests=true"
+                }
+            }
+        }
     }
 }
