@@ -6,9 +6,9 @@ pipeline {
     }
     
     stages {
-        stage('Git Clone') {
+        stage('Build') {
             steps {
-                git branch: 'main', url: 'https://github.com/shubham-sihasane/tweet-trend.git'
+                sh 'mvn clean deploy'
             }
         }
     }
