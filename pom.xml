@@ -125,10 +125,12 @@
 
 	<distributionManagement>
 		<repository>
-			<id>dev</id>
-			<url>file://jarstaging</url>
+			<id>maven-releases</id>
+			<url>http://206.189.129.251:8000/repository/maven-releases/</url>
+		</repository>
+		<repository>
+			<id>maven-snapshots</id>
+			<url>http://206.189.129.251:8000/repository/maven-snapshots/</url>
 		</repository>
 	</distributionManagement>
-
-
 </project>
