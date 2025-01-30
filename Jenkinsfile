@@ -1,10 +1,10 @@
+def registry = 'https://mybottle.jfrog.io'
 pipeline {
     agent {
         node {
             label 'Jenkins-Slave'
         }
     }
-    
     environment {
         PATH = "/opt/apache-maven-3.9.9/bin:$PATH"
         SCANNER_HOME = tool 'sonarqube-scanner'
@@ -33,8 +33,6 @@ pipeline {
                 }
             }
         }
-
-        def registry = 'https://mybottle.jfrog.io'
         stage("Jar Publish") {
         steps {
             script {
