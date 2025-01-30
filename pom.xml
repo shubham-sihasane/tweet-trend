@@ -118,7 +118,7 @@
 	<distributionManagement>
 		<repository>
 			<id>dev</id>
-			<url>file://target</url>
+			<url>file://jarstaging</url>
 		</repository>
 	</distributionManagement>
 
